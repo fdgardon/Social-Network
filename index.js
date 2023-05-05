@@ -4,7 +4,7 @@ const routes = require('./routes/api');
 const models = require('./models');
 
 
-
+const dbName = 'SocialDB';
 const PORT = process.env.PORT || 3001;
 const app = express();
 
