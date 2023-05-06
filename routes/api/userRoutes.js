@@ -1,11 +1,6 @@
 
- 
-
 const router = require('express').Router();
 const { User, Thought } = require('../../models');
-
-
-
 
 // git all User
 router.get('/', async (req, res) => {
