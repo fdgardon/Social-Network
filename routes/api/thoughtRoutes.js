@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { User, thought } = require('../../models');
+const { User, Thought } = require('../../models');
 
 
 // git all User
 router.get('/', async (req, res) => {
   
   try {
-    const thoughtData = await thought.find().select('-__v');
-    res.status(200).json(thoughtData);
+    const ThoughtData = await Thought.find().select('-__v');
+    res.status(200).json(ThoughtData);
   } catch (err) {
     console.log(err)
     res.status(500).json(err);
@@ -36,9 +36,9 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
 console.log("bob")
   try {
-    const thoughtData = await thought.findOne({_id: req.params.id})
+    const ThoughtData = await Thought.findOne({_id: req.params.id})
     .select('-__v');
-    res.status(200).json(thoughtData);
+    res.status(200).json(ThoughtData);
   } catch (err) {
     console.log(err)
     res.status(500).json(err);
@@ -50,8 +50,8 @@ console.log("bob")
 //creates
 router.post ('/', async (req, res) => {
   try {
-    const thoughtData = await thought.create(req.body);
-    res.json(thoughtData);
+    const ThoughtData = await Thought.create(req.body);
+    res.json(ThoughtData);
   } catch (err) {
     console.log(err);
     return res.status(500).json(err);
@@ -63,17 +63,17 @@ router.post ('/', async (req, res) => {
 
 router.put ('/:id', async (req, res) => {
   try {
-    const thoughtData = await thought.findOneAndUpdate(
+    const ThoughtData = await Thought.findOneAndUpdate(
       { _id: req.params.id },
       { $set: req.body },
       { runValidators: true, new: true }
     );
 
-    if (!thoughtData) {
+    if (!ThoughtData) {
       return res.status(404).json({ message: 'No thought with this id!' });
     }
 
-    res.json(thoughtData);
+    res.json(ThoughtData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -82,9 +82,9 @@ router.put ('/:id', async (req, res) => {
 //this delete the User
 router.delete('/:id', async (req, res) =>{
   try {
-    const thoughtData = await thought.findOneAndDelete({ _id: req.params.id });
+    const ThoughtData = await Thought.findOneAndDelete({ _id: req.params.id });
 
-    if (!thoughtData) {
+    if (!ThoughtData) {
       return res.status(404).json({ message: 'No thought with that ID' });
     }
     res.json({ message: 'thought deleted!' });
