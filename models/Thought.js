@@ -1,7 +1,6 @@
 const { Schema, model } = require('mongoose');
 const reactionSchema = require('./Reaction');
 
-// Schema to create a course model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -14,7 +13,6 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
-      //Use a getter method to format the timestamp on query
     },
     username: {
       type: String,
@@ -22,8 +20,6 @@ const thoughtSchema = new Schema(
     },
     
     reactions: [reactionSchema]
-   
-    
   },
   {
     toJSON: {

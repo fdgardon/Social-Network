@@ -13,7 +13,7 @@ module.exports = {
       console.log(err);
     }
   },
-  // Get a single user
+  
   async getSingleUser(req, res) {
     try {
       const user = await User.findOne({ _id: req.params.userId });
@@ -26,7 +26,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Create a comment
+
   async createUser(req, res) {
     try {
       const user = await User.create(req.body);

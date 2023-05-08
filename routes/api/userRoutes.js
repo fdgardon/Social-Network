@@ -2,7 +2,6 @@
 const router = require('express').Router();
 const { User, Thought } = require('../../models');
 
-// git all User
 router.get('/', async (req, res) => {
   
     try {
@@ -14,7 +13,7 @@ router.get('/', async (req, res) => {
   
     }
   });
-// git a User with id
+
 router.get('/:id', async (req, res) => {
   console.log("bob")
     try {
@@ -28,8 +27,6 @@ router.get('/:id', async (req, res) => {
     }
   });
 
-
-//creates
 router.post ('/', async (req, res) => {
     try {
       const UserData = await User.create(req.body);
@@ -60,7 +57,6 @@ router.put ('/:id', async (req, res) => {
   }
 })
 
-//this delete the User
 router.delete('/:id', async (req, res) =>{
   try {
     const UserData = await User.findOneAndDelete({ _id: req.params.id });

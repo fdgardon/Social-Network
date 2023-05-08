@@ -1,7 +1,5 @@
 const { User, Thought } = require('../models');
 
-
-// .sort({createdAt: -1})
 module.exports = {
   async getThoughts(req, res) {
     try {
@@ -12,7 +10,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Get a single thought
+
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId });
@@ -25,7 +23,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Create a thought 
+
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
@@ -71,12 +69,11 @@ module.exports = {
     }
   },
 
-// ****************************firgute out how to find the reaction withithn a thought 
   async createReaction(req, res) {
     try {
       const reaction = await Thought.findOneAndUpdate(
-        { _id: req.params.thoughtId}, 
-        { $push: {reactions: req.body}},
+        { _id: req.params.thoughtId },
+        { $push: { reactions: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -90,12 +87,12 @@ module.exports = {
     } catch (err) {
       console.error(err);
     }
-  },  
+  },
   async deleteReaction(req, res) {
     try {
       const reaction = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        {$pull: {reactions: {_id: req.params.reactionId}}});
+        { $pull: { reactions: { _id: req.params.reactionId } } });
 
       if (!reaction) {
         return res.status(404).json({ message: 'No reaction with this id!' });

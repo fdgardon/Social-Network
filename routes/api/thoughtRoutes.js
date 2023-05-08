@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { User, Thought } = require('../../models');
 
-
-// git all User
 router.get('/', async (req, res) => {
   
   try {
@@ -15,24 +13,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// const ThoughtController = {
-//   // get all pizzas
-//   getAllThought(req, res) {
-//       Thought.find({})
-//        // .populate({
-//        //   path: 'username',   this is what broke it but why does archigas not have his break?
-//         //  select: '-__v'
-//        // })
-//         .select('-__v')
-//         .sort({ _id: -1 })
-//         .then(dbUserData => res.json(dbUserData))
-//         .catch(err => {
-//           console.log(err);
-//           res.status(400).json(err);
-//         });
-//     },
-//   }
-// git a User with id
 router.get('/:id', async (req, res) => {
 console.log("bob")
   try {
@@ -46,8 +26,6 @@ console.log("bob")
   }
 });
 
-
-//creates
 router.post ('/', async (req, res) => {
   try {
     const ThoughtData = await Thought.create(req.body);
@@ -58,8 +36,6 @@ router.post ('/', async (req, res) => {
   };
 
 })
-
-
 
 router.put ('/:id', async (req, res) => {
   try {
@@ -79,7 +55,6 @@ router.put ('/:id', async (req, res) => {
   }
 })
 
-//this delete the User
 router.delete('/:id', async (req, res) =>{
   try {
     const ThoughtData = await Thought.findOneAndDelete({ _id: req.params.id });
