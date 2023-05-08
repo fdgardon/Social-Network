@@ -65,19 +65,6 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: 'No user with this id!' });
       }
-    
-      // const thoughts = await Thought.find({ user.username: req.params.userId })
-    //   const thoughts = await Thought.findAllAndUpdate(
-    //     { User: req.params.userId },
-    //     { $pull: { videos: req.params.videoId } },
-    //     { new: true }
-    //   );
-
-    //   if (!user) {
-    //     return res
-    //       .status(404)
-    //       .json({ message: 'Video created but no user with this id!' });
-    //   }
 
       res.json({ message: 'User deleted!' });
     } catch (err) {
@@ -94,7 +81,7 @@ module.exports = {
       if (!user) {
         return res.status(404).json({ message: 'No user with this id!' });
       }
-      // res.json({ message: 'Friend added!'})
+      
       res.json(user);
     } catch (err) {
       console.log(err);
